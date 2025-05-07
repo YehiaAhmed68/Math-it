@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All in One</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algebrite@1.4.0/dist/algebrite.min.js"></script>
+    <style>
+        /* [Previous CSS content remains unchanged] */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- [Previous HTML content remains unchanged] -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mathField = MathQuill.getInterface(2Based on the errors and file content, I'll provide the necessary SEARCH/REPLACE blocks to fix the JavaScript syntax issues. Here's the diff:
+
+<diff>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All in One</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algebrite@1.4.0/dist/algebrite.min.js"></script>
+    <style>
+        /* [Previous CSS content remains unchanged] */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- [Previous HTML content remains unchanged] -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mathField = MathQuill.getInterface(2).MathField(document.getElementById('math-input'), {
+                handlers: {
+                    edit: function () {
+                        document.getElementById('math-query').value = mathField.latex();
+                    }
+                }
+            });
+
+            function toggleMathKeyboard() {
+
+            const mathKeyboard = document.getElementById('math-keyboard');
+            mathKeyboard.style.display = mathKeyboard.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        let graphTimeout;
+        
+        function updateGraph() {
+            clearTimeout(graphTimeout);
+            const expression = document.getElementById('expression-input').value;
+            if (!expression) return;
+            
+            graphTimeout = setTimeout(() => {
+                fetch(`/graph?equation=${encodeURIComponent(expression)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.graph) {
+                            const graphContainer = document.querySelector('.graph-container');
+                            graphContainer.innerHTML = `
+                                <h4>Graph:</h4>
+                                <img src="data:image/png;base64,${data.graph}" alt="Graph" style="width: 100%; max-width: 600px; height: auto;">
+                            `;
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }, 500);
+        }
+
+        function submitGraph() {
+            const expression = document.getElementById('expression-input').value;
+            if (expression) {
+                window.location.href = `/search?query=${encodeURIComponent(expression)}`;
+            }
+        }
+
+        function toggleSteps(id) {
+            const stepsDiv = document.getElementById(id);
+            const button = stepsDiv.previousElementSibling;
+            if (stepsDiv.style.display === "none") {
+                stepsDiv.style.display = "block";
+                button.textContent = "Hide Steps";
+            } else {
+                stepsDiv.style.display = "none";
+                button.textContent = "Show Steps";
+            }
+        }
+    </script>
+</body>
+</html>
